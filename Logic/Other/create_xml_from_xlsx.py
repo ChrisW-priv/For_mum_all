@@ -1,4 +1,4 @@
-def make_xml_from_xlsx(original_file='Form_name (date-format).xlsx', sheet_name='Arkusz1'):
+def make_xml_from_xlsx(original_file='*.xlsx', form='', sheet_name='Arkusz1'):
     import xml.etree.ElementTree as ET
     import pandas as pd
     import datetime
@@ -20,7 +20,7 @@ def make_xml_from_xlsx(original_file='Form_name (date-format).xlsx', sheet_name=
                      'xsi:schemaLocation': "http://sprawozdawczosc.nbp.pl/schema/2019_02_01/przesylka "
                                            "http://sprawozdawczosc.nbp.pl/schema/2019_02_01/przesylka.xsd"}
     content_setup = {'dataWypelnienia': f"{str(df.at[0, 'dataWypelnienia']).split(' ')[0]}",
-                     'xsi:type': f"ts:Spr{original_file.split('/')[-1].split(' ')[0]}Type"}
+                     'xsi:type': f"ts:Spr{form}Type"}
     header_setup = {'td:regon': '63027533800000',
                     'ts:nazwa': 'Tarkett Polska Sp. z o.o.'}
 
@@ -42,7 +42,6 @@ def make_xml_from_xlsx(original_file='Form_name (date-format).xlsx', sheet_name=
 
     for line in range(df.shape[0]):
         try:
-            # sometimes it will be 'NoneType' which breaks everything
             index_num = str(int(df.at[line, 'nrWiersza']))
         except Exception as e:
             print(e)
@@ -67,8 +66,7 @@ def make_xml_from_xlsx(original_file='Form_name (date-format).xlsx', sheet_name=
                         print(e)
                         continue
 
-    now = datetime.datetime.now()
-    new_file = f"{original_file.split('/')[-1].split(' ')[0]}_{now.strftime('%m_%Y')}_dane.xml"
-    mydata = ET.tostring(package)
+    new_file = f"New/{form}_{datetime.datetime.now().strftime('%m_%Y')}_dane.xml"
     myfile = open(new_file, "wb")
+    mydata = ET.tostring(package)
     myfile.write(mydata)

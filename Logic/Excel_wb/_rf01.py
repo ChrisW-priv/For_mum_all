@@ -1,4 +1,6 @@
 def wb_form_rf01():
+    from openpyxl import Workbook
+
     wb = Workbook()
 
     for i in range(2, 4+1):
@@ -12,5 +14,5 @@ def wb_form_rf01():
 
     create_content()
 
-    filename = 'RF-01.xlsx'
+    filename = 'New/RF-01.xlsx'
     wb.save(filename)

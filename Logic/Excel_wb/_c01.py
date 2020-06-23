@@ -1,4 +1,6 @@
 def wb_form_c01():
+    from openpyxl import Workbook
+
     wb = Workbook()
     ws = wb.active
     ws.title = 'Wartości_do_przepisania'
@@ -16,5 +18,5 @@ def wb_form_c01():
     ws.cell(4, 1, value='03')
     ws.cell(5, 1, value='04')
 
-    filename = 'C-01.xlsx'
+    filename = 'New/C-01.xlsx'
     wb.save(filename)
