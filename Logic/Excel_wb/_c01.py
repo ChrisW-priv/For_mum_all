@@ -1,4 +1,4 @@
-def wb_from_c01():
+def wb_form_c01():
     wb = Workbook()
     ws = wb.active
     ws.title = 'Wartości_do_przepisania'
