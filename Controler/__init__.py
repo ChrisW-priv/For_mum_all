@@ -1,5 +1,3 @@
-from PyQt5 import QtWidgets
-
 class Controler:
 	def __init__(self):
 		import json
@@ -24,11 +22,3 @@ class Controler:
 	from .send_values_to_GUS import send_values_to_GUS
 	from .create_XML_NBP import create_XML_NBP
 	from .contact_info import contact_info
-
-
-
-if __name__ == '__main__':
-	import sys
-	app = QtWidgets.QApplication(sys.argv)
-	controller = Controller()
-	sys.exit(app.exec_())

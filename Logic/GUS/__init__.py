@@ -28,12 +28,10 @@ class GUSAutomated:
             self.driver.find_element_by_xpath('//a[@class="input_button"]') \
                 .click()
 
-        try: 
-            self.driver.find_element_by_xpath('//a[@title="Przejdź"]') \
-                .click()
-        except Exception:
-            print('Sth went wrong most probably wrong password')
-        sleep(5)
+        self.driver.find_element_by_xpath('//a[@title="Przejdź"]') \
+            .click()
+        
+        sleep(3)
 
     @contextmanager
     def wait_for_page_load(self, timeout=30):

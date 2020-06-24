@@ -18,19 +18,19 @@ def send_values_to_GUS(self):
 			
 			if form == 'C-01':
 				b.choose_form(form)
-				b.c01(file)
+				b.c01(file[0])
 			elif form == 'RF-01':
 				b.choose_form(form)
-				b.rf01(file)
+				b.rf01(file[0])
 			elif form == 'F-01':
 				b.choose_form(form)
-				b.f01(file)
+				b.f01(file[0])
 			elif form == 'DG-1':
 				b.choose_form(form)
-				b.dg1(file)
+				b.dg1(file[0])
 			elif form == 'SP':
 				b.choose_form(form)
-				b.sp(file)
+				b.sp(file[0])
 			else:
 				from PyQt5.QtWidgets import QMessageBox
 				msg = QMessageBox()
