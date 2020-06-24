@@ -32,38 +32,14 @@ def send_values_to_GUS(self):
 				b.choose_form(form)
 				b.sp(file[0])
 			else:
-				from PyQt5.QtWidgets import QMessageBox
-				msg = QMessageBox()
-				msg.setWindowTitle('InvalidFormError!')
-				msg.setText('Current Logic does not support form you have chosen')
-				msg.setIcon(QMessageBox.Information)		
-				x = msg.exec_()
+				self.show_popup('InvalidFormError!', 'Current Logic does not support form you have chosen')
 		except Exception:
-			from PyQt5.QtWidgets import QMessageBox
-
-			msg = QMessageBox()
-			msg.setWindowTitle('UnknownError')
-			msg.setText('This was unexpected\nMost likely you have set invalid password or id')
-			msg.setIcon(QMessageBox.Information)		
-			x = msg.exec_()
-	except Exception:
-		from PyQt5.QtWidgets import QMessageBox
-
-		if id_ == '' or pwd == '':
-			msg = QMessageBox()
-			msg.setWindowTitle('IdOrPasswordNotSet!')
-			msg.setText('You have not set your Id or Password!')
-			msg.setIcon(QMessageBox.Information)		
-			x = msg.exec_()
+			self.show_popup('UnknownError', 'This was unexpected\nMost likely you have set invalid password or id\n'\
+				'or your file was not set correctly, try using one created with this app')
+	except Exception as e:
 		if file == '':
-			msg = QMessageBox()
-			msg.setWindowTitle('FileNotSetError!')
-			msg.setText('You have not chosen any file!')
-			msg.setIcon(QMessageBox.Information)		
-			x = msg.exec_()
-		else:
-			msg = QMessageBox()
-			msg.setWindowTitle('UnknownError!')
-			msg.setText('Sth unexpected happened!')
-			msg.setIcon(QMessageBox.Information)		
-			x = msg.exec_()
+			self.show_popup('FileNotSetError!', 'You have not chosen any file!')
+		if id_ == '' or pwd == '':
+			self.show_popup('IdOrPasswordNotSet!', 'You have not set your Id or Password!')		
+		if file != '' and id_ != '' and pwd != '':
+			self.show_popup('UnknownError!', f'Sth unexpected happened!\nError: "{e}"')

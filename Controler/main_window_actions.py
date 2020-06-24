@@ -3,7 +3,6 @@ from windowsCode.MainActionWindow import MainWindow as Main
 
 def main_window_actions(self):
 	self.main = Main()
-	self.validationPage.close()
 	self.main.show()
 	
 	# actions

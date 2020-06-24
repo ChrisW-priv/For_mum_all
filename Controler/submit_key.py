@@ -1,14 +1,13 @@
 def submit_key(self):
+	import json
+	
 	key_input = self.validationPage.ProdKeyInput.text()
 	
-	if key_input == self.jsonf['key']:
+	with open(self.setup_file_name) as f:
+		data = json.load(f)
+
+	if key_input == data['key']:
+		self.validationPage.close()
 		self.main_window_actions()
 	else:	
-		from PyQt5.QtWidgets import QMessageBox
-
-		msg = QMessageBox()
-		msg.setWindowTitle('KeyValidationError!')
-		msg.setText('Key input does not match the Produkt Key')
-		msg.setIcon(QMessageBox.Information)
-		
-		x = msg.exec_()
+		self.show_popup('KeyValidationError!', 'Key input does not match the Produkt Key')

@@ -1,5 +1,10 @@
 from PyQt5.QtWidgets import QFileDialog
 
+
+def set_begin(self):
+	self.GUS_File = ''
+	self.NBP_File = ''
+	self.current_file = ''
 def gus_file(self):
 	self.GUS_File = QFileDialog.getOpenFileName(caption='choose_file')
 def nbp_file(self):
