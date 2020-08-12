@@ -242,8 +242,6 @@ class MainWindow(QMainWindow):
         self.actionDG_1.setObjectName("actionDG_1")
         self.actionEmail = QtWidgets.QAction(self)
         self.actionEmail.setObjectName("actionEmail")
-        self.actionContact = QtWidgets.QAction(self)
-        self.actionContact.setObjectName("actionContact")
         self.menuFiles.addAction(self.actionAdd_file)
         self.menuFiles.addAction(self.actionGet_File)
         self.menuCreate_WB_for_specyfic_GUS_forms.addAction(self.actionSP_)
@@ -256,7 +254,6 @@ class MainWindow(QMainWindow):
         self.menuActions.addAction(self.menuCreate_WB_for_specyfic_GUS_forms.menuAction())
         self.menuActions.addAction(self.menuSend_values_to_GUS)
         self.menuActions.addAction(self.action_Keep_alive_mode)
-        self.menuHome.addAction(self.actionContact)
         self.menubar.addAction(self.menuFiles.menuAction())
         self.menubar.addAction(self.menuActions.menuAction())
         self.menubar.addAction(self.menuHome.menuAction())
@@ -286,10 +283,10 @@ class MainWindow(QMainWindow):
         self.NBP_ChooseFile.setText(_translate("MainWindow", "Choose File"))
         self.chooseXML.setItemText(0, _translate("MainWindow", "MAZ-DEP"))
         self.chooseXML.setItemText(1, _translate("MainWindow", "MAZ-KRE"))
-        self.chooseXML.setItemText(2, _translate("MainWindow", "MAZ_KRH"))
+        self.chooseXML.setItemText(2, _translate("MainWindow", "MAZ-KRH"))
         self.chooseXML.setItemText(3, _translate("MainWindow", "MPZ-DEP"))
         self.chooseXML.setItemText(4, _translate("MainWindow", "MPZ-KRE"))
-        self.chooseXML.setItemText(5, _translate("MainWindow", "MPZ_KRH"))
+        self.chooseXML.setItemText(5, _translate("MainWindow", "MPZ-KRH"))
         self.chooseXML.setItemText(6, _translate("MainWindow", "MPZ-UDZ"))
         self.label_14.setText(_translate("MainWindow", "Choose XML"))
         self.label_15.setText(_translate("MainWindow", "Choose File"))
@@ -321,7 +318,6 @@ class MainWindow(QMainWindow):
         self.actionC_01.setText(_translate("MainWindow", "C-01"))
         self.actionDG_1.setText(_translate("MainWindow", "DG-1"))
         self.actionEmail.setText(_translate("MainWindow", "Email"))
-        self.actionContact.setText(_translate("MainWindow", "Contact Me"))
 
 
 if __name__ == "__main__":

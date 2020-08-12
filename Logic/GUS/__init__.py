@@ -74,7 +74,7 @@ class GUSAutomated:
         try:
             cell = self.driver.find_element_by_xpath(f"//input[@id='{cell_id}']")
             cell.clear()
-            cell.send_keys(int(value))
+            cell.send_keys(str(int(value)))
             sleep(0.1)
         except Exception as e:
             print('Exeption!:', e)

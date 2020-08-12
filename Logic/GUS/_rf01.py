@@ -1,9 +1,9 @@
 def rf01(self, filename_or_file_path='RF-01.xlsx'):
-    self.send_contact_info('//input[@name="email1"]', self.email)
-    self.send_contact_info('//input[@name="email2"]', self.email)
-    self.send_contact_info('//input[@name="tel0"]', self.phone[:2])
-    self.send_contact_info('//input[@name="tel"]', self.phone[2:])
-    self.driver.find_element_by_xpath('//input[@id="3fp"]').click()
+    #self.send_contact_info('//input[@name="email1"]', self.email)
+    #self.send_contact_info('//input[@name="email2"]', self.email)
+    #self.send_contact_info('//input[@name="tel0"]', self.phone[:2])
+    #self.send_contact_info('//input[@name="tel"]', self.phone[2:])
+    #self.driver.find_element_by_xpath('//input[@id="3fp"]').click()
 
     # done
     self.driver.find_element_by_xpath('//a[@id="nextPage"]') \
@@ -11,8 +11,7 @@ def rf01(self, filename_or_file_path='RF-01.xlsx'):
     sleep(1)
 
     # main body:
-    # wb = xl.load_workbook(filename_or_file_path)
-    wb = pd.read_excel(filename_or_file_path)
+    wb = pd.read_excel(filename_or_file_path, sheet_name=None)
     sheetnames = [key for key,item in wb.items()]
 
     for sheet_name in sheetnames:
@@ -21,14 +20,9 @@ def rf01(self, filename_or_file_path='RF-01.xlsx'):
         sleep(1)
         try:
             if int(sheet_name) in range(2, 3+1):
-                col_name_for_id = 'id_nr'
-                col_name_for_value = 'value'
-
                 for row_index in range(df.shape[0]):
-                    row = df.loc[row_index]
-
-                    nr = str(row[col_name_for_id])
-                    value = row[col_name_for_value]
+                    nr = str(int(df.at[row_index, 0]))
+                    value = df.at[row_index, 1]
 
                     cell_id = f'a{nr}'
 
@@ -39,14 +33,9 @@ def rf01(self, filename_or_file_path='RF-01.xlsx'):
 
         try:
             if sheet_name == '4':
-                col_name_for_id = 'id_nr'
-                col_name_for_value = 'value'
-
                 for row_index in range(df.shape[0]):
-                    row = df.loc[row_index]
-
-                    nr = str(row[col_name_for_id])
-                    value = row[col_name_for_value]
+                    nr = str(int(df.at[row_index, 0]))
+                    value = df.at[row_index, 1]
 
                     cell_id = f'p{nr}'
 

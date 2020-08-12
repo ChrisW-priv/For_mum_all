@@ -1,24 +1,24 @@
 def f01(self, filename_or_file_path='F-01.xlsx'):
         # page 1
-        self.send_contact_info('//input[@name="e_mail"]', self.email)
-        self.send_contact_info('//input[@name="tel"]', self.phone)
-        self.send_contact_info('//input[@name="e_mail_o"]', self.email)
+        #self.send_contact_info('//input[@name="e_mail"]', self.email)
+        #sleep(1)
+        #self.send_contact_info('//input[@name="tel"]', self.phone)
+        #sleep(1)
+        #self.send_contact_info('//input[@name="e_mail_o"]', self.email)
+        sleep(1)
 
         # done
         self.driver.find_element_by_xpath('//a[@id="nextPage"]') \
             .click()
         sleep(1)
-
         # page 2
-        self.driver.find_element_by_xpath('//input[@id="1w1b1"]') \
-            .click()
+        sleep(1)
         # done
         self.driver.find_element_by_xpath('//a[@id="nextPage"]') \
             .click()
         sleep(1)
 
         # main body:
-        # wb = xl.load_workbook(filename_or_file_path)
         wb = pd.read_excel(filename_or_file_path)
         sheetnames = [key for key,item in wb.items()]
 

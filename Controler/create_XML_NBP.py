@@ -3,15 +3,18 @@ from Logic import make_xml_from_xlsx
 def create_XML_NBP(self):
 	from PyQt5.QtWidgets import QMessageBox
 	
-	file = self.NBP_File
 	form = str(self.main.chooseXML.currentText())
 	sheet_name = str(self.main.SheetName.toPlainText())
+	try:
+		file = self.NBP_File[0]
+	except Exception:
+		file = ''
 
 	try:
 		assert file != ''
 		assert sheet_name != ''
 		
-		make_xml_from_xlsx(file[0], form, sheet_name)
+		make_xml_from_xlsx(file, form, sheet_name)
 
 		msg = QMessageBox()
 		msg.setWindowTitle('FileCreated!')

@@ -10,7 +10,6 @@ def main_window_actions(self):
 	
 	self.main.actionSort_Values.triggered.connect(self.sort_file)
 	self.main.action_Keep_alive_mode.triggered.connect(keep_alive)
-	self.main.actionContact.triggered.connect(self.contact_info)
 
 	self.main.actionSP_.triggered.connect(wb_form_sp)
 	self.main.actionF_01.triggered.connect(wb_form_f01)

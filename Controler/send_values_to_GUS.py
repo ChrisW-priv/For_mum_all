@@ -7,8 +7,11 @@ def send_values_to_GUS(self):
 	phone = str(self.main.GUS_Phone.toPlainText())
 	name = str(self.main.GUS_Name.toPlainText())
 	form = str(self.main.chooseGUS_Form.currentText())
-	file = self.GUS_File				
-	
+	try:
+		file = str((self.GUS_File)[0])
+	except Exception:
+		file = ''
+
 	try: 
 		assert id_ != '' and pwd != ''
 		assert file != ''
@@ -18,24 +21,23 @@ def send_values_to_GUS(self):
 			
 			if form == 'C-01':
 				b.choose_form(form)
-				b.c01(file[0])
+				b.c01(file)
 			elif form == 'RF-01':
 				b.choose_form(form)
-				b.rf01(file[0])
+				b.rf01(file)
 			elif form == 'F-01':
 				b.choose_form(form)
-				b.f01(file[0])
+				b.f01(file)
 			elif form == 'DG-1':
 				b.choose_form(form)
-				b.dg1(file[0])
+				b.dg1(file)
 			elif form == 'SP':
 				b.choose_form(form)
-				b.sp(file[0])
+				b.sp(file)
 			else:
 				self.show_popup('InvalidFormError!', 'Current Logic does not support form you have chosen')
-		except Exception:
-			self.show_popup('UnknownError', 'This was unexpected\nMost likely you have set invalid password or id\n'\
-				'or your file was not set correctly, try using one created with this app')
+		except Exception as e:
+			self.show_popup('UnknownError', e)
 	except Exception as e:
 		if file == '':
 			self.show_popup('FileNotSetError!', 'You have not chosen any file!')
