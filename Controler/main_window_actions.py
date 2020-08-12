@@ -1,4 +1,4 @@
-from Logic import wb_form_f01, wb_form_c01, wb_form_gd1, wb_form_sp, wb_form_rf01, keep_alive
+from Logic import wb_form_f01, wb_form_c01, wb_form_gd1, wb_form_sp, wb_form_rf01
 from windowsCode.MainActionWindow import MainWindow as Main
 
 def main_window_actions(self):
@@ -9,8 +9,6 @@ def main_window_actions(self):
 	self.main.actionAdd_file.triggered.connect(self.set_file)
 	
 	self.main.actionSort_Values.triggered.connect(self.sort_file)
-	self.main.action_Keep_alive_mode.triggered.connect(keep_alive)
-
 	self.main.actionSP_.triggered.connect(wb_form_sp)
 	self.main.actionF_01.triggered.connect(wb_form_f01)
 	self.main.actionRF_01.triggered.connect(wb_form_rf01)
