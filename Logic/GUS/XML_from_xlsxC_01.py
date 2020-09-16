@@ -1,4 +1,4 @@
-def make_xml_from_xlsx(original_file='*.xlsx', form='', sheet_name='Arkusz1'):
+def make_xml_from_xlsxC_01(original_file='*.xlsx', form='', sheet_name='Arkusz1'):
     import xml.etree.ElementTree as ET
     import pandas as pd
     import datetime
@@ -20,13 +20,12 @@ def make_xml_from_xlsx(original_file='*.xlsx', form='', sheet_name='Arkusz1'):
         package.set(key, value)
 
     df = df.drop(columns=['formularzSymbol', 'formularzWersja', 'numerSprawozdania'])
-    
-    additional_cols = ['iloscSekcji', 'id2', 'id3', 'widoczna']
-    for col in additional_cols:
-        try:
-            df = df.drop(columns=col)
-        except Exception:
-            continue
+    if form == 'DG-1':
+        df = df.drop(columns=['id2', 'widoczna'])
+    elif form == 'C-01':
+        df = df.drop(columns=['iloscSekcji', 'id2', 'id3', 'widoczna'])
+    elif form == 'DG-1':
+        df = df.drop(columns=['id2', 'widoczna'])
 
     for row in range(len(df)):
         field = ET.SubElement(elements, 'Pole')
@@ -49,7 +48,7 @@ def make_xml_from_xlsx(original_file='*.xlsx', form='', sheet_name='Arkusz1'):
         end =  ET.SubElement(elements, 'Sekcja')
         end.set('id','sek0')
         end.set('widoczna','false')
-    elif form == 'DNU-K':
+    elif form == 'C-01':
         pass
 
 

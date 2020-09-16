@@ -1,24 +1,21 @@
 from Logic import wb_form_f01, wb_form_c01, wb_form_gd1, wb_form_sp, wb_form_rf01
-from windowsCode.MainActionWindow import MainWindow as Main
+from windowsCode.MainWindow import MainWindow as Main
 
 def main_window_actions(self):
 	self.main = Main()
 	self.main.show()
 	
-	# actions
-	self.main.actionAdd_file.triggered.connect(self.set_file)
-	
-	self.main.actionSort_Values.triggered.connect(self.sort_file)
-	self.main.actionSP_.triggered.connect(wb_form_sp)
-	self.main.actionF_01.triggered.connect(wb_form_f01)
-	self.main.actionRF_01.triggered.connect(wb_form_rf01)
-	self.main.actionC_01.triggered.connect(wb_form_c01)
-	self.main.actionDG_1.triggered.connect(wb_form_gd1)
+	# actions	
+	self.main.WybierzPlik_GUS.connect(choose_GUS_file_to_be_converted)
+	self.main.CreateXML_GUS.connect(self.create_XML_GUS)
+	self.main.SendToGus.connect(self.send_values_to_GUS)
+	self.main.WybierzPlik_GUS_2.connect(choose_GUS_file_to_be_send)
+	self.main.WybierzPlik_NBP.connect(choose_NBP_file_to_be_converted)
+	self.main.CreateXML_NBP.connect(self.create_XML_NBP)
 
-	self.main.GUS_ChooseFile.clicked.connect(self.gus_file)
-	self.main.GUS_SendButton.clicked.connect(self.send_values_to_GUS)
-	self.main.menuSend_values_to_GUS.triggered.connect(self.send_values_to_GUS)
-
-	self.main.NBP_ChooseFile.clicked.connect(self.nbp_file)
-	self.main.NBP_CreateButton.clicked.connect(self.create_XML_NBP)
-	self.main.menuCreate_XML_file_from_xlsx_file.triggered.connect(self.create_XML_NBP)
+	def choose_GUS_file_to_be_converted():
+		self.GUS_file_to_be_converted = QFileDialog.getOpenFileName(caption='choose_file')
+	def choose_GUS_file_to_be_send():
+		self.GUS_file_to_be_send = QFileDialog.getOpenFileName(caption='choose_file')
+	def choose_NBP_file_to_be_converted():
+		self.NBP_file_to_be_converted = QFileDialog.getOpenFileName(caption='choose_file')

@@ -1,4 +1,4 @@
-def show_popup(self, title, msg):
+def show_info_popup(self, title, msg):
 	from PyQt5.QtWidgets import QMessageBox
 
 	popup = QMessageBox()

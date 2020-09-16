@@ -1,5 +1,5 @@
-from .GUS import GUSAutomated
-from .Excel_wb import *
-from .Other.sort_mums_file import sort
-from .Other.keep_alive_mode import keep_alive
-from .Other.create_xml_from_xlsx import make_xml_from_xlsx
+from .GUS.GUS_Sender import GUSAutomated
+from .GUS.XML_from_xlsxC_01 import make_xml_from_xlsxC_01
+from .GUS.XML_from_xlsx_GUS import xml_from_xlsx_GUS
+
+from .NBP.XML_from_xlsx_NBP import xml_from_xlsx_NBP
