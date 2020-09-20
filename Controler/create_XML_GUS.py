@@ -1,8 +1,8 @@
 from Logic import xml_from_xlsx_GUS
 
 def create_XML_GUS(self):
-	form = str(self.main.chooseXML.currentText())
-	sheet_name = str(self.main.SheetName.toPlainText())
+	form = str(self.main.GUS_Form_to_XML.currentText())
+	sheet_name = str(self.main.GUS_sheetname.toPlainText())
 	
 	try:
 		assert file != ''

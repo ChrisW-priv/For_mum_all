@@ -1,7 +1,7 @@
 import os
 
 def xml_from_xlsx_GUS(original_file='*.xlsx', form='', sheet_name='Arkusz1'):
-    from datatime import datetime
+    from datetime import datetime
     import xml.etree.ElementTree as ET
     import pandas as pd
 

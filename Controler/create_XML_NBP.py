@@ -1,8 +1,8 @@
 from Logic import xml_from_xlsx_NBP
 
 def create_XML_NBP(self):
-	form = str(self.main.chooseXML.currentText())
-	sheet_name = str(self.main.SheetName.toPlainText())
+	form = str(self.main.NBPForm.currentText())
+	sheet_name = str(self.main.NBP_sheetname.toPlainText())
 
 	try:
 		assert file != ''

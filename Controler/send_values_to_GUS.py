@@ -1,9 +1,11 @@
-from Logic import GUSAutomated
+from Logic.GUS.send_XML_to_GUS import send_XML_to_GUS
+from Logic.GUS.GUS_Sender import GUSAutomated
+
 
 def send_values_to_GUS(self):
 	id_ = str(self.main.GUS_LOGIN.toPlainText())
 	pwd = str(self.main.GUS_PWD.toPlainText())
-	form = str(self.main.chooseGUS_Form.currentText())
+	form = str(self.main.GUS_Form_Send.currentText())
 	try:
 		file = str((self.GUS_file_to_be_send)[0])
 	except Exception:

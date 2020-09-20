@@ -1,7 +1,11 @@
 import os
+from windowsCode.MainWindow import MainWindow as Main
 
 class Controler:
     def __init__(self):
+        self.main = Main()
+        self.main.show()
+
         self.main_window_actions()
         # setup
         self.path_to_desktop = os.path.join(os.path.expanduser("~/Desktop"), 'New')

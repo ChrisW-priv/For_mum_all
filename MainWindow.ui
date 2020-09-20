@@ -17,10 +17,10 @@
    <widget class="QGroupBox" name="groupBox">
     <property name="geometry">
      <rect>
-      <x>0</x>
+      <x>10</x>
       <y>10</y>
-      <width>301</width>
-      <height>141</height>
+      <width>361</width>
+      <height>181</height>
      </rect>
     </property>
     <property name="title">
@@ -29,20 +29,20 @@
     <property name="alignment">
      <set>Qt::AlignCenter</set>
     </property>
-    <widget class="QWidget" name="widget_2" native="true">
+    <widget class="QWidget" name="CreateXML_GUS" native="true">
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>10</y>
-       <width>271</width>
-       <height>51</height>
+       <y>90</y>
+       <width>301</width>
+       <height>71</height>
       </rect>
      </property>
      <widget class="QLabel" name="label_4">
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>10</y>
+        <y>20</y>
         <width>71</width>
         <height>31</height>
        </rect>
@@ -54,39 +54,82 @@
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QPushButton" name="WybierzPlik_GUS">
+     <widget class="QWidget" name="createXML_1" native="true">
       <property name="geometry">
        <rect>
         <x>110</x>
         <y>10</y>
-        <width>75</width>
-        <height>24</height>
+        <width>201</width>
+        <height>61</height>
        </rect>
       </property>
-      <property name="text">
-       <string>Wybierz Plik</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="CreateXML_GUS">
-      <property name="geometry">
-       <rect>
-        <x>190</x>
-        <y>10</y>
-        <width>75</width>
-        <height>24</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Stwórz XML</string>
-      </property>
+      <widget class="QComboBox" name="GUSForm">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>91</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <item>
+        <property name="text">
+         <string>Formularz1</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Formularz2</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QLineEdit" name="GUS_sheetname">
+       <property name="geometry">
+        <rect>
+         <x>110</x>
+         <y>0</y>
+         <width>81</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Arkusz1</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="CreateXML_GUS_2">
+       <property name="geometry">
+        <rect>
+         <x>110</x>
+         <y>30</y>
+         <width>75</width>
+         <height>24</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Stwórz XML</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="WybierzPlik_GUS_3">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>30</y>
+         <width>75</width>
+         <height>24</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Wybierz Plik</string>
+       </property>
+      </widget>
      </widget>
     </widget>
-    <widget class="QWidget" name="widget_3" native="true">
+    <widget class="QWidget" name="sendToGUSwidget" native="true">
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>60</y>
-       <width>271</width>
+       <y>20</y>
+       <width>341</width>
        <height>71</height>
       </rect>
      </property>
@@ -94,9 +137,9 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>10</y>
+        <y>0</y>
         <width>111</width>
-        <height>16</height>
+        <height>21</height>
        </rect>
       </property>
       <property name="text">
@@ -106,8 +149,8 @@
      <widget class="QPushButton" name="SendToGus">
       <property name="geometry">
        <rect>
-        <x>190</x>
-        <y>10</y>
+        <x>260</x>
+        <y>0</y>
         <width>75</width>
         <height>24</height>
        </rect>
@@ -120,7 +163,7 @@
       <property name="geometry">
        <rect>
         <x>110</x>
-        <y>10</y>
+        <y>0</y>
         <width>75</width>
         <height>24</height>
        </rect>
@@ -132,7 +175,7 @@
      <widget class="QLineEdit" name="lineEdit">
       <property name="geometry">
        <rect>
-        <x>0</x>
+        <x>110</x>
         <y>40</y>
         <width>113</width>
         <height>20</height>
@@ -145,7 +188,7 @@
      <widget class="QLineEdit" name="lineEdit_2">
       <property name="geometry">
        <rect>
-        <x>160</x>
+        <x>230</x>
         <y>40</y>
         <width>113</width>
         <height>20</height>
@@ -155,15 +198,35 @@
        <string>GUS-Hasło</string>
       </property>
      </widget>
+     <widget class="QComboBox" name="GUSForm_2">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>40</y>
+        <width>91</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <item>
+       <property name="text">
+        <string>Formularz1</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Formularz2</string>
+       </property>
+      </item>
+     </widget>
     </widget>
    </widget>
    <widget class="QGroupBox" name="groupBox_2">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>180</y>
-      <width>281</width>
-      <height>141</height>
+      <y>190</y>
+      <width>361</width>
+      <height>101</height>
      </rect>
     </property>
     <property name="title">
@@ -172,13 +235,13 @@
     <property name="alignment">
      <set>Qt::AlignCenter</set>
     </property>
-    <widget class="QWidget" name="widget" native="true">
+    <widget class="QWidget" name="createXML_NBP" native="true">
      <property name="geometry">
       <rect>
        <x>10</x>
        <y>20</y>
-       <width>261</width>
-       <height>51</height>
+       <width>301</width>
+       <height>61</height>
       </rect>
      </property>
      <widget class="QLabel" name="label_3">
@@ -197,31 +260,74 @@
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QPushButton" name="WybierzPlik_NBP">
+     <widget class="QWidget" name="createXML_2" native="true">
       <property name="geometry">
        <rect>
-        <x>90</x>
-        <y>10</y>
-        <width>75</width>
-        <height>24</height>
+        <x>110</x>
+        <y>0</y>
+        <width>191</width>
+        <height>61</height>
        </rect>
       </property>
-      <property name="text">
-       <string>Wybierz Plik</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="CreateXML_NBP">
-      <property name="geometry">
-       <rect>
-        <x>180</x>
-        <y>10</y>
-        <width>75</width>
-        <height>24</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Stwórz XML</string>
-      </property>
+      <widget class="QComboBox" name="NBPForm">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>91</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <item>
+        <property name="text">
+         <string>Formularz1</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Formularz2</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QLineEdit" name="NBP_sheetname">
+       <property name="geometry">
+        <rect>
+         <x>110</x>
+         <y>0</y>
+         <width>81</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Arkusz1</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="CreateXML_NBP">
+       <property name="geometry">
+        <rect>
+         <x>110</x>
+         <y>30</y>
+         <width>75</width>
+         <height>24</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Stwórz XML</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="WybierzPlik_NBP">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>30</y>
+         <width>75</width>
+         <height>24</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Wybierz Plik</string>
+       </property>
+      </widget>
      </widget>
     </widget>
    </widget>
