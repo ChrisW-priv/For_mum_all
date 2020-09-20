@@ -5,7 +5,6 @@ class Controler:
     def __init__(self):
         self.main = Main()
         self.main.show()
-        print(type(self.main))
 
         self.main_window_actions()
         # setup
