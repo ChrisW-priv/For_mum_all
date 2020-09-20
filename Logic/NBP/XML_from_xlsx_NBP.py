@@ -1,7 +1,9 @@
-def xml_from_xlsx_NBP(original_file='*.xlsx', form='', sheet_name='Arkusz1'):
+import os
+
+def xml_from_xlsx_NBP(path_to_folder, original_file='*.xlsx', form='', sheet_name='Arkusz1'):
+    from datatime import datetime
     import xml.etree.ElementTree as ET
     import pandas as pd
-    import datetime
 
     df = pd.read_excel(original_file, sheet_name=sheet_name)
     for column_name in df.columns:
@@ -19,28 +21,27 @@ def xml_from_xlsx_NBP(original_file='*.xlsx', form='', sheet_name='Arkusz1'):
                      'okres_sprawozdawczy': f"{df.at[0, 'okres_sprawozdawczy']}",
                      'xsi:schemaLocation': "http://sprawozdawczosc.nbp.pl/schema/2019_02_01/przesylka "
                                            "http://sprawozdawczosc.nbp.pl/schema/2019_02_01/przesylka.xsd"}
+    package = ET.Element('prz:przesylka')
+    for key in package_setup:
+        content.set(key, package_setup[key])
+    
     content_setup = {'dataWypelnienia': f"{str(df.at[0, 'dataWypelnienia']).split(' ')[0]}",
                      'xsi:type': f"ts:Spr{form}Type"}
+    content = ET.SubElement(package, 'prz:sprawozdanie')
+    for key in content_setup:
+        content.set(key, content_setup[key])
+    
     header_setup = {'td:regon': '63027533800000',
                     'ts:nazwa': 'Tarkett Polska Sp. z o.o.'}
-
-    package = ET.Element('prz:przesylka')
-    content = ET.SubElement(package, 'prz:sprawozdanie')
     header = ET.SubElement(content, 'ts:naglowek')
+    for key in header_setup:
+        header_element = ET.SubElement(header, key)
+        header_element.text = header_setup[key]    
+
     data = ET.SubElement(content, 'ts:dane')
     rows = ET.SubElement(data, 'ts:wiersze')
 
-    for key, value in package_setup.items():
-        package.set(key, value)
-
-    for key, value in content_setup.items():
-        content.set(key, value)
-
-    for key, value in header_setup.items():
-        header_element = ET.SubElement(header, key)
-        header_element.text = value
-
-    for line in range(df.shape[0]):
+    for line in range(len(df)):
         try:
             index_num = str(int(df.at[line, 'nrWiersza']))
         except Exception as e:
@@ -66,7 +67,11 @@ def xml_from_xlsx_NBP(original_file='*.xlsx', form='', sheet_name='Arkusz1'):
                         print(e)
                         continue
 
-    new_file = f"New/{form}_{datetime.datetime.now().strftime('%m_%Y')}_dane.xml"
-    myfile = open(new_file, "wb")
+    new_file = os.path.join(path_to_folder, f"{form}_{datetime.now().strftime('%m_%Y')}.xml")
     mydata = ET.tostring(package)
-    myfile.write(mydata)
+    with open(new_file, "wb") as myfile:
+        myfile.write(mydata)
+
+if __name__ == '__main__':
+    os.makedirs(os.path.join(os.path.expanduser("~/Desktop"), 'New'), exist_ok=True)
+    xml_from_xlsx_NBP(os.path.expanduser("~/Desktop/NEW"), "E:/DG-1.xlsx", 'DG-1')

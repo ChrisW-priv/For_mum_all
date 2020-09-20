@@ -1,7 +1,9 @@
+import os
+
 def xml_from_xlsx_GUS(original_file='*.xlsx', form='', sheet_name='Arkusz1'):
+    from datatime import datetime
     import xml.etree.ElementTree as ET
     import pandas as pd
-    import datetime
 
     df = pd.read_excel(original_file, sheet_name=sheet_name)
    
@@ -12,27 +14,19 @@ def xml_from_xlsx_GUS(original_file='*.xlsx', form='', sheet_name='Arkusz1'):
                      'formularzWersja':str(df.at[0,'formularzWersja']),
                      'numerSprawozdania':str(df.at[0,'numerSprawozdania'])
     }
-
     package = ET.Element('Sprawozdanie')
-    elements = ET.SubElement(package, 'Elementy')
-    
     for key, value in package_setup.items():
         package.set(key, value)
-
     df = df.drop(columns=['formularzSymbol', 'formularzWersja', 'numerSprawozdania'])
-    
-    additional_cols = ['iloscSekcji', 'id2', 'id3', 'widoczna']
-    for col in additional_cols:
-        try:
-            df = df.drop(columns=col)
-        except Exception:
-            continue
 
+    elements = ET.SubElement(package, 'Elementy')
+    
+    columns_to_be_ignored = ['iloscSekcji', 'id2', 'id3', 'widoczna']
     for row in range(len(df)):
         field = ET.SubElement(elements, 'Pole')
 
         for column in df.columns:
-            if str(df.at[row, column]) == 'nan':
+            if str(df.at[row, column]) == 'nan' or column in columns_to_be_ignored:
                 continue
             else:
                 field.set(column, str(df.at[row, column]))
@@ -52,12 +46,12 @@ def xml_from_xlsx_GUS(original_file='*.xlsx', form='', sheet_name='Arkusz1'):
     elif form == 'DNU-K':
         pass
 
-
-    new_file = f"E:/New_XML_{form}_202007.xml"
-    myfile = open(new_file, "wb")
+    new_file = os.path.join(path_to_folder, f"{form}_{datetime.now().strftime('%m_%Y')}.xml")
     mydata = ET.tostring(package)
-    myfile.write(mydata)
+    with open(new_file, "wb") as myfile:
+        myfile.write(mydata)
 
 
 if __name__ == '__main__':
-    make_xml_from_xlsx("E:/DG-1.xlsx", 'DG-1')
+    os.makedirs(os.path.join(os.path.expanduser("~/Desktop"), 'New'), exist_ok=True)
+    xml_from_xlsx_GUS(os.path.expanduser("~/Desktop/NEW"), "E:/DG-1.xlsx", 'DG-1')
