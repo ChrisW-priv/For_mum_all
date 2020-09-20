@@ -14,8 +14,8 @@ def main_window_actions(self):
 	
 	# actions	
 	self.main.WybierzPlikGUS_ToXML.clicked.connect(choose_GUS_file_to_be_converted)
-	self.main.CreateXML_GUS.clicked.connect(create_XML_GUS)
+	self.main.CreateXML_GUS.clicked.connect(self.create_XML_GUS)
 	self.main.SendToGus.clicked.connect(send_XML_to_GUS)
 	self.main.WybierzPlik_GUS_ToSend.clicked.connect(choose_GUS_file_to_be_send)
 	self.main.WybierzPlik_NBP.clicked.connect(choose_NBP_file_to_be_converted)
-	self.main.CreateXML_NBP.clicked.connect(create_XML_NBP)
+	self.main.CreateXML_NBP.clicked.connect(self.create_XML_NBP)

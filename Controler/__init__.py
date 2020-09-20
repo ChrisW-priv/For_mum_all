@@ -5,6 +5,7 @@ class Controler:
     def __init__(self):
         self.main = Main()
         self.main.show()
+        print(type(self.main))
 
         self.main_window_actions()
         # setup
@@ -17,6 +18,6 @@ class Controler:
     
     from .show_popup import show_info_popup
     from .main_window_actions import main_window_actions
-    from .create_XML_NBP import create_XML_NBP
     from .create_XML_GUS import create_XML_GUS
+    from .create_XML_NBP import create_XML_NBP
     from .send_values_to_GUS import send_values_to_GUS
