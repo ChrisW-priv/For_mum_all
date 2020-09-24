@@ -5,11 +5,8 @@ import pandas as pd
 
 
 class GUSAutomated:
-    def __init__(self, user_id='', pwd='', phone='', email='', name=''):
-        self.name = name
-        self.phone = phone
-        self.email = email
-        self.driver = webdriver.Chrome("Logic/chromedriver.exe")
+    def __init__(self, user_id='', pwd=''):
+        self.driver = webdriver.Chrome()
         
         self.driver.get("https://urldefense.proofpoint.com/v2/url?u=https-3A__raport.stat.gov.pl"
                         "&d=DwIFBA&c=vB1XvbdVorFiBi73ukS05g&r=8pFXRQZHfARhT2wBLn_ZEFVB2T7jg7VK4xvHRIdDtzY"
@@ -77,13 +74,15 @@ class GUSAutomated:
             cell.send_keys(str(int(value)))
             sleep(0.1)
         except Exception as e:
-            print('Exeption!:', e)
+            print('Exeption!:\n', e)
 
     def set_correct_form_page_in_sp_form(self, form_nr=''):
         self.driver.find_element_by_xpath(f'//select[@id="strony"]/option[contains(text(), "{form_nr}.")]').click()
 
-    from ._f01 import f01
-    from ._sp import sp
-    from ._dg1 import dg1
-    from ._c01 import c01
-    from ._rf01 import rf01
+
+if __name__ == '__main__':
+    b = GUSAutomated('qOQLQnH6','Tarkett2018')
+    b.choose_form('F-01')
+    # button to redirect to import XML has title="Import XML" in an <a> tag
+    # choose file has <input> tag with id="plik"
+    # button to import is in <a> tag and has title="Importuj"

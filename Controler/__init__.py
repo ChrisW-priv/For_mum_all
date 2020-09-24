@@ -6,7 +6,6 @@ class Controler:
         self.main = Main()
         self.main.show()
 
-        self.main_window_actions()
         # setup
         self.path_to_desktop = os.path.join(os.path.expanduser("~/Desktop"), 'New')
         os.makedirs(self.path_to_desktop, exist_ok=True)
@@ -14,6 +13,9 @@ class Controler:
         self.GUS_file_to_be_converted = ''
         self.GUS_file_to_be_send = ''
         self.NBP_file_to_be_converted = ''
+
+        # start accepting data 
+        self.main_window_actions()
     
     from .show_popup import show_info_popup
     from .main_window_actions import main_window_actions
