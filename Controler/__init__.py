@@ -21,4 +21,4 @@ class Controler:
     from .main_window_actions import main_window_actions
     from .create_XML_GUS import create_XML_GUS
     from .create_XML_NBP import create_XML_NBP
-    from .send_values_to_GUS import send_values_to_GUS
+    from .send_XML_to_GUS import send_file_to_GUS
